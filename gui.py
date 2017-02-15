@@ -1,4 +1,5 @@
 from tkinter import *
+from PIL import Image, ImageTk
 
 class Window(Frame):
 
@@ -20,13 +21,26 @@ class Window(Frame):
                 edit=Menu(menu)
                 edit.add_command(label="undo")
                 menu.add_cascade(label="Edit", menu=edit)
-
-                
+                edit.add_command(label="text",command=self.show_text)
+                edit.add_command(label="Img",command=self.show_img)
                 quitbutton.place(x=0, y=0)
                 
                 
         def client_exit(self):
                 exit()
+
+        def show_text(self):
+                text = Label(self,text="This is your peorsnal assisatant cosmo")
+                text.pack()
+
+        def show_img(self):
+                load=Image.open("car.png")
+                render = ImageTk.PhotoImage(load)
+
+                img=Label(self,image=render)
+                img.image = render
+                img.place(x=0, y=0)
+                
                 
 root = Tk()
 root.geometry("400x300")
