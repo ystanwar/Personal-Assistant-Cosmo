@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
-
+found_files=["one","two","three","four" ]
 class Window(Frame):
 
         def __init__(self, master=None):
@@ -23,7 +23,7 @@ class Window(Frame):
                 menu.add_cascade(label="Edit", menu=edit)
                 edit.add_command(label="text",command=self.show_text)
                 edit.add_command(label="Img",command=self.show_img)
-                quitbutton.place(x=0, y=0)
+                quitbutton.place(x=170, y=10)
                 
                 
         def client_exit(self):
@@ -44,5 +44,11 @@ class Window(Frame):
                 
 root = Tk()
 root.geometry("400x300")
+listbox = Listbox(root)
+
+for a in found_files:
+    listbox.insert(END, a)
+
+listbox.pack(fill=BOTH, expand=YES)
 app = Window(root)
-root.mainloop
+root.mainloop()
